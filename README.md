@@ -15,6 +15,8 @@
 [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/) portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
 Tested on Windows 7, Windows 8.1 and Windows 10.
 
+> 💡 IntelliJ IDEA Community portable is also available [here](https://github.com/portapps/intellij-idea-community-portable)
+
 ## Installation
 
 There are different kinds of artifacts :
