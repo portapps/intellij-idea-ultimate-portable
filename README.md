@@ -1,8 +1,8 @@
 <p align="center"><a href="https://portapps.github.io/app/intellij-idea-ultimate-portable" target="_blank"><img width="100" src="https://github.com/portapps/intellij-idea-ultimate-portable/blob/master/res/papp.png"></a></p>
 
 <p align="center">
-  <a href="https://github.com/portapps/intellij-idea-ultimate-portable/releases/latest"><img src="https://img.shields.io/github/release/portapps/intellij-idea-ultimate-portable.svg?style=flat-square" alt="GitHub release"></a>
-  <a href="https://github.com/portapps/intellij-idea-ultimate-portable/releases/latest"><img src="https://img.shields.io/github/downloads/portapps/intellij-idea-ultimate-portable/total.svg?style=flat-square" alt="Total downloads"></a>
+  <a href="https://portapps.github.io/app/intellij-idea-ultimate-portable/#download"><img src="https://img.shields.io/github/release/portapps/intellij-idea-ultimate-portable.svg?style=flat-square" alt="GitHub release"></a>
+  <a href="https://portapps.github.io/app/intellij-idea-ultimate-portable/#download"><img src="https://img.shields.io/github/downloads/portapps/intellij-idea-ultimate-portable/total.svg?style=flat-square" alt="Total downloads"></a>
   <a href="https://ci.appveyor.com/project/portapps/intellij-idea-ultimate-portable"><img src="https://img.shields.io/appveyor/ci/portapps/intellij-idea-ultimate-portable.svg?style=flat-square" alt="AppVeyor"></a>
   <a href="https://goreportcard.com/report/github.com/portapps/intellij-idea-ultimate-portable"><img src="https://goreportcard.com/badge/github.com/portapps/intellij-idea-ultimate-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/portapps/intellij-idea-ultimate-portable"><img src="https://img.shields.io/codacy/grade/4e73cf8bd60a4b7aa8b3122d4b026757.svg?style=flat-square" alt="Code Quality"></a>
