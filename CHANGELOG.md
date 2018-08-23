@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018.2.2-12 (2018/08/23)
+
+* Upgrade to IntelliJ IDEA Ultimate 2018.2.2
+
 ## 2018.2.1-11 (2018/08/08)
 
 * Upgrade to IntelliJ IDEA Ultimate 2018.2.1
