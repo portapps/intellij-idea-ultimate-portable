@@ -1,13 +1,8 @@
 # Support [![](https://isitmaintained.com/badge/resolution/portapps/intellij-idea-ultimate-portable.svg)](https://isitmaintained.com/project/portapps/intellij-idea-ultimate-portable)
 
-## Reporting an issue
+## Submit an issue
 
-First,
-
-* Read the [FAQ](http://portapps.github.io/doc/faq/).
-* Search for [existing issues](https://github.com/portapps/intellij-idea-ultimate-portable/issues?utf8=%E2%9C%93&q=).
-
-If it did not help you, [create a new issue](https://github.com/portapps/intellij-idea-ultimate-portable/issues).
+Please follow [this guide](http://portapps.github.io/doc/reporting-issue/) to file a proper issue report.
 
 ## Closure policy
 
