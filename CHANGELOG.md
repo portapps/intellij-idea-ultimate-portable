@@ -1,5 +1,11 @@
 # Changelog
 
+## 2018.2.4-14 (2018/09/19)
+
+* Upgrade to IntelliJ IDEA Ultimate 2018.2.4
+* Upgrade to Go 1.11
+* Use [go mod](https://golang.org/cmd/go/#hdr-Module_maintenance) instead of `dep`
+
 ## 2018.2.3-13 (2018/09/06)
 
 * Upgrade to IntelliJ IDEA Ultimate 2018.2.3
