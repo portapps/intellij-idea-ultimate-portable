@@ -1,5 +1,10 @@
 # Changelog
 
+## 2018.3.4-1 (2019/02/04)
+
+* Upgrade to IntelliJ IDEA Ultimate 2018.3.4
+* Switch to Travis CI
+
 ## 2018.3.3-19 (2019/01/11)
 
 * Upgrade to IntelliJ IDEA Ultimate 2018.3.3
