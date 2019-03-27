@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019.1-4 (2019/03/27)
+
+* IntelliJ IDEA Ultimate 2019.1
+
 ## 2018.3.6-3 (2019/03/26)
 
 * IntelliJ IDEA Ultimate 2018.3.6
