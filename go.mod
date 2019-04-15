@@ -1,3 +1,5 @@
 module github.com/portapps/intellij-idea-ultimate-portable
 
-require github.com/portapps/portapps v1.21.0
+go 1.12
+
+require github.com/portapps/portapps v1.22.0
