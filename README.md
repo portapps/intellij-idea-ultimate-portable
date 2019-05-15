@@ -12,13 +12,15 @@
 
 ## Notice of Non-Affiliation and Disclaimer
 
-Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with JetBrains, or any of its subsidiaries or its affiliates. The official JetBrains website can be found at https://www.jetbrains.com.
+Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with IntelliJ IDEA™, or any of its subsidiaries or its affiliates.
 
-The name JetBrains® as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+The official IntelliJ IDEA™ website can be found at https://www.jetbrains.com.
+
+The name IntelliJ IDEA™ as well as related names, marks, emblems and images are registered trademarks of their respective owners.
 
 ## About
 
-IntelliJ IDEA Ultimate portable app made with 🚀 [Portapps](https://portapps.io).<br />
+IntelliJ IDEA™ Ultimate portable app made with 🚀 [Portapps](https://portapps.io).<br />
 Documentation and downloads can be found on https://portapps.io/app/intellij-idea-ultimate-portable/
 
 ## How can I help ?
