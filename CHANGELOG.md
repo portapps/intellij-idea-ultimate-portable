@@ -1,5 +1,10 @@
 # Changelog
 
+## 2019.1.3-7 (2019/05/28)
+
+* IntelliJ IDEA Ultimate 2019.1.3
+* Portapps 1.24.1
+
 ## 2019.1.2-6 (2019/05/08)
 
 * IntelliJ IDEA Ultimate 2019.1.2
