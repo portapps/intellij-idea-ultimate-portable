@@ -15,6 +15,10 @@ var (
 	app *App
 )
 
+const (
+	vmOptionsFile = "idea.vmoptions"
+)
+
 func init() {
 	var err error
 
@@ -26,8 +30,10 @@ func init() {
 
 func main() {
 	ideaExe := "idea.exe"
+	ideaVmOptionsFile := "idea.exe.vmoptions"
 	if runtime.GOARCH == "amd64" {
 		ideaExe = "idea64.exe"
+		ideaVmOptionsFile = "idea64.exe.vmoptions"
 	}
 
 	utl.CreateFolder(app.DataPath)
@@ -48,6 +54,14 @@ idea.log.path={{ DATA_PATH }}/log`, "{{ DATA_PATH }}", utl.FormatUnixPath(app.Da
 
 	// https://www.jetbrains.com/help/idea/tuning-intellij-idea.html#configure-platform-properties
 	utl.OverrideEnv("IDEA_PROPERTIES", ideaPropPath)
+
+	// https://www.jetbrains.com/help/idea/tuning-the-ide.html#configure-jvm-options
+	utl.OverrideEnv("IDEA_VM_OPTIONS", utl.PathJoin(app.DataPath, vmOptionsFile))
+	if !utl.Exists(utl.PathJoin(app.DataPath, vmOptionsFile)) {
+		utl.CopyFile(utl.PathJoin(app.AppPath, "bin", ideaVmOptionsFile), utl.PathJoin(app.DataPath, vmOptionsFile))
+	} else {
+		utl.CopyFile(utl.PathJoin(app.DataPath, vmOptionsFile), utl.PathJoin(app.AppPath, "bin", ideaVmOptionsFile))
+	}
 
 	app.Launch(os.Args[1:])
 }
