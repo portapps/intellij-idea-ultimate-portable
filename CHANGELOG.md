@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019.2-9 (2019/07/24)
+
+* IntelliJ IDEA Ultimate 2019.2
+
 ## 2019.1.3-8 (2019/07/04)
 
 * Allow to customize vmoptions (Issue #3)
