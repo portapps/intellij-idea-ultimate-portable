@@ -1,5 +1,9 @@
 # Changelog
 
+## 2019.2-10 (2019/08/02)
+
+* Fix 32-bit release (Issue #4)
+
 ## 2019.2-9 (2019/07/24)
 
 * IntelliJ IDEA Ultimate 2019.2
