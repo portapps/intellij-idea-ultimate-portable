@@ -7,12 +7,13 @@ import (
 	"runtime"
 	"strings"
 
-	. "github.com/portapps/portapps"
-	"github.com/portapps/portapps/pkg/utl"
+	"github.com/portapps/portapps/v2"
+	"github.com/portapps/portapps/v2/pkg/log"
+	"github.com/portapps/portapps/v2/pkg/utl"
 )
 
 var (
-	app *App
+	app *portapps.App
 )
 
 const (
@@ -23,8 +24,8 @@ func init() {
 	var err error
 
 	// Init app
-	if app, err = New("intellij-idea-ultimate-portable", "IntelliJ IDEA Ultimate"); err != nil {
-		Log.Fatal().Err(err).Msg("Cannot initialize application. See log file for more info.")
+	if app, err = portapps.New("intellij-idea-ultimate-portable", "IntelliJ IDEA Ultimate"); err != nil {
+		log.Fatal().Err(err).Msg("Cannot initialize application. See log file for more info.")
 	}
 }
 
@@ -49,7 +50,7 @@ idea.log.path={{ DATA_PATH }}/log`, "{{ DATA_PATH }}", utl.FormatUnixPath(app.Da
 
 	ideaPropPath := utl.PathJoin(app.DataPath, "idea.properties")
 	if err := utl.CreateFile(ideaPropPath, ideaPropContent); err != nil {
-		Log.Fatal().Err(err).Msg("Cannot write idea.properties")
+		log.Fatal().Err(err).Msg("Cannot write idea.properties")
 	}
 
 	// https://www.jetbrains.com/help/idea/tuning-intellij-idea.html#configure-platform-properties
