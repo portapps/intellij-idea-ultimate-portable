@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020.1-24 (2020/04/14)
+
+* IntelliJ IDEA Ultimate 2020.1
+* Portapps 2.1.2
+
 ## 2019.3.4-23 (2020/03/21)
 
 * IntelliJ IDEA Ultimate 2019.3.4
