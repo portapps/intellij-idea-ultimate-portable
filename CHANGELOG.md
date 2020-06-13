@@ -1,5 +1,11 @@
 # Changelog
 
+## 2020.1.2-26 (2020/06/13)
+
+* IntelliJ IDEA Ultimate 2020.1.2
+* Wrong parameter in installer (#14)
+* Portapps 2.4.4
+
 ## 2020.1.1-25 (2020/05/07)
 
 * IntelliJ IDEA Ultimate 2020.1.1
