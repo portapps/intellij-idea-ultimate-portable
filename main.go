@@ -4,6 +4,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 	"runtime"
 	"strings"
 
@@ -65,5 +66,8 @@ idea.log.path={{ DATA_PATH }}/log`, "{{ DATA_PATH }}", utl.FormatUnixPath(app.Da
 	}
 
 	defer app.Close()
+	if len(os.Args) == 2 {
+		os.Args[1], _ = filepath.Abs(os.Args[1])
+	}
 	app.Launch(os.Args[1:])
 }
