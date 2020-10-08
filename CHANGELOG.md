@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020.2.3-30 (2020/10/09)
+
+* IntelliJ IDEA Ultimate 2020.2.3
+
 ## 2020.2.1-29 (2020/08/30)
 
 * IntelliJ IDEA Ultimate 2020.2.1
