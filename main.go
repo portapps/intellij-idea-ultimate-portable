@@ -7,9 +7,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/portapps/portapps/v2"
-	"github.com/portapps/portapps/v2/pkg/log"
-	"github.com/portapps/portapps/v2/pkg/utl"
+	"github.com/portapps/portapps/v3"
+	"github.com/portapps/portapps/v3/pkg/log"
+	"github.com/portapps/portapps/v3/pkg/utl"
 )
 
 var (
@@ -54,10 +54,10 @@ idea.log.path={{ DATA_PATH }}/log`, "{{ DATA_PATH }}", utl.FormatUnixPath(app.Da
 	}
 
 	// https://www.jetbrains.com/help/idea/tuning-intellij-idea.html#configure-platform-properties
-	utl.OverrideEnv("IDEA_PROPERTIES", ideaPropPath)
+	os.Setenv("IDEA_PROPERTIES", ideaPropPath)
 
 	// https://www.jetbrains.com/help/idea/tuning-the-ide.html#configure-jvm-options
-	utl.OverrideEnv("IDEA_VM_OPTIONS", utl.PathJoin(app.DataPath, vmOptionsFile))
+	os.Setenv("IDEA_VM_OPTIONS", utl.PathJoin(app.DataPath, vmOptionsFile))
 	if !utl.Exists(utl.PathJoin(app.DataPath, vmOptionsFile)) {
 		utl.CopyFile(utl.PathJoin(app.AppPath, "bin", ideaVmOptionsFile), utl.PathJoin(app.DataPath, vmOptionsFile))
 	} else {
