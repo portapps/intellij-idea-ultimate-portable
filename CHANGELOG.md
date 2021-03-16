@@ -4,6 +4,7 @@
 
 * IntelliJ IDEA Ultimate 2020.3.2
 * Portapps 3.3.0
+* No more win32 release
 
 ## 2020.3-31 (2020/12/12)
 

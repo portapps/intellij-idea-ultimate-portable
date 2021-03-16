@@ -4,7 +4,6 @@ package main
 
 import (
 	"os"
-	"runtime"
 	"strings"
 
 	"github.com/portapps/portapps/v3"
@@ -30,12 +29,8 @@ func init() {
 }
 
 func main() {
-	ideaExe := "idea.exe"
-	ideaVmOptionsFile := "idea.exe.vmoptions"
-	if runtime.GOARCH == "amd64" {
-		ideaExe = "idea64.exe"
-		ideaVmOptionsFile = "idea64.exe.vmoptions"
-	}
+	ideaExe := "idea64.exe"
+	ideaVmOptionsFile := "idea64.exe.vmoptions"
 
 	utl.CreateFolder(app.DataPath)
 	app.Process = utl.PathJoin(app.AppPath, "bin", ideaExe)
