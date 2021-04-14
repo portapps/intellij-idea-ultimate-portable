@@ -1,5 +1,10 @@
 # Changelog
 
+## 2021.1-33 (2021/04/14)
+
+* IntelliJ IDEA Ultimate 2021.1
+* Fix innosetup def
+
 ## 2020.3.2-32 (2021/03/15)
 
 * IntelliJ IDEA Ultimate 2020.3.2
