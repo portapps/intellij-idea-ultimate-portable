@@ -1,5 +1,9 @@
 # Changelog
 
+## 2021.1.2-34 (2021/06/28)
+
+* IntelliJ IDEA Ultimate 2021.1.2
+
 ## 2021.1-33 (2021/04/14)
 
 * IntelliJ IDEA Ultimate 2021.1
