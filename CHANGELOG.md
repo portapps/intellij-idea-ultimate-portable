@@ -1,5 +1,10 @@
 # Changelog
 
+## 2021.2.2-35 (2021/09/19)
+
+* IntelliJ IDEA Ultimate 2021.2.2
+* Portapps 3.3.1
+
 ## 2021.1.2-34 (2021/06/28)
 
 * IntelliJ IDEA Ultimate 2021.1.2
