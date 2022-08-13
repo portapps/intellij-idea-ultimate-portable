@@ -1,5 +1,9 @@
 # Changelog
 
+## 2022.2-38 (2022/08/13)
+
+* IntelliJ IDEA Ultimate 2022.2
+
 ## 2022.1.1-37 (2022/05/22)
 
 * IntelliJ IDEA Ultimate 2022.1.1
