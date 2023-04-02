@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023.1-39 (2023/04/02)
+
+* IntelliJ IDEA Ultimate 2023.1
+* Portapps 3.7.0
+
 ## 2022.2-38 (2022/08/13)
 
 * IntelliJ IDEA Ultimate 2022.2
