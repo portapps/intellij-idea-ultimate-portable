@@ -1,5 +1,10 @@
 # Changelog
 
+## 2025.1.1.1-44 (2025/05/17)
+
+* IntelliJ IDEA Ultimate 2025.1.1.1
+* Portapps 3.16.0
+
 ## 2024.3.1.1-43 (2025/01/05)
 
 * IntelliJ IDEA Ultimate 2024.3.1.1
