@@ -1,0 +1,179 @@
+name: update-app
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    paths:
+      - '.github/workflows/update-app.yml'
+      - 'build.properties'
+
+jobs:
+  update:
+    if: github.event_name != 'pull_request'
+    runs-on: windows-latest
+    environment: update-app # secrets are gated by this environment
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      -
+        name: GitHub auth token from GitHub App
+        id: write-app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.PORTAPPS_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.PORTAPPS_BOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+          permission-pull-requests: write
+      -
+        name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          token: ${{ steps.write-app.outputs.token }}
+          fetch-depth: 0
+          persist-credentials: false
+      -
+        name: Update IntelliJ IDEA Ultimate
+        id: update
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: &update-script |
+            const fs = require('fs');
+            const path = require('path');
+
+            const releasesUrl = 'https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release';
+
+            function workspacePath(relativePath) {
+              return path.join(process.env.GITHUB_WORKSPACE, relativePath);
+            }
+
+            function readFile(relativePath) {
+              return fs.readFileSync(workspacePath(relativePath), 'utf8');
+            }
+
+            function writeFile(relativePath, content) {
+              fs.writeFileSync(workspacePath(relativePath), content, 'utf8');
+            }
+
+            function propertyValue(content, name) {
+              const pattern = new RegExp(`^${name.replaceAll('.', '\\.')}\\s*=\\s*(.+)$`, 'm');
+              const match = content.match(pattern);
+              if (!match) {
+                throw new Error(`Missing ${name} in build.properties`);
+              }
+              return match[1].trim();
+            }
+
+            function replaceProperty(content, name, value) {
+              const pattern = new RegExp(`^(${name.replaceAll('.', '\\.')}\\s*=\\s*).+$`, 'm');
+              if (!pattern.test(content)) {
+                throw new Error(`Missing ${name} in build.properties`);
+              }
+              return content.replace(pattern, (_, prefix) => `${prefix}${value}`);
+            }
+
+            async function latestStableRelease() {
+              const response = await fetch(releasesUrl);
+              if (!response.ok) {
+                throw new Error(`JetBrains releases API returned ${response.status} ${response.statusText}`);
+              }
+
+              const products = await response.json();
+              const release = products.IIU?.[0];
+              if (!release || release.type !== 'release' || !release.version || !release.downloads?.windowsZip?.link) {
+                throw new Error(`No stable IntelliJ IDEA Ultimate Windows ZIP found in ${releasesUrl}`);
+              }
+              return {
+                version: release.version,
+                downloadUrl: release.downloads.windowsZip.link
+              };
+            }
+
+            const latest = await latestStableRelease();
+            core.info(`Resolved latest stable IntelliJ IDEA Ultimate release: ${JSON.stringify(latest)}`);
+
+            const relativePath = 'build.properties';
+            const currentContent = readFile(relativePath);
+            const currentVersion = propertyValue(currentContent, 'app.version');
+            const currentRelease = Number(propertyValue(currentContent, 'app.release'));
+            if (!Number.isInteger(currentRelease)) {
+              throw new Error(`Invalid app.release in ${relativePath}: ${currentRelease}`);
+            }
+
+            let updatedContent = currentContent;
+            updatedContent = replaceProperty(updatedContent, 'app.version', latest.version);
+            const versionChanged = updatedContent !== currentContent;
+            updatedContent = replaceProperty(updatedContent, 'atf.win64.url', latest.downloadUrl);
+            const nextRelease = versionChanged ? currentRelease + 1 : currentRelease;
+            updatedContent = replaceProperty(updatedContent, 'app.release', String(nextRelease));
+
+            if (updatedContent !== currentContent) {
+              writeFile(relativePath, updatedContent);
+              core.info(`Updated ${relativePath}`);
+            } else {
+              core.info(`${relativePath} is already up to date`);
+            }
+
+            core.setOutput('title', `IntelliJ IDEA Ultimate ${latest.version}`);
+            core.setOutput('version', latest.version);
+            core.setOutput('previous-version', currentVersion);
+            core.setOutput('release', String(nextRelease));
+      -
+        name: Create pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          base: ${{ github.event.repository.default_branch }}
+          branch: update-intellij-idea
+          token: ${{ steps.write-app.outputs.token }}
+          commit-message: ${{ steps.update.outputs.title }}
+          title: ${{ steps.update.outputs.title }}
+          signoff: true
+          sign-commits: true
+          delete-branch: true
+          body: |
+            This updates IntelliJ IDEA Ultimate to ${{ steps.update.outputs.version }}.
+
+  diff:
+    if: github.event_name == 'pull_request'
+    runs-on: windows-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read # same as global permissions
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      -
+        name: Update IntelliJ IDEA Ultimate
+        id: update
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: *update-script
+      -
+        name: Show diff
+        shell: pwsh
+        run: |
+          $diff = git --no-pager diff -- build.properties
+          if ($diff) {
+            $diff
+          } else {
+            Write-Host "No update diff."
+          }
